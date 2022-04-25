@@ -9,6 +9,8 @@ import { RecipeItemComponent } from './components/recipe-item/recipe-item.compon
 import { AuthorModalComponent } from './modals/author-modal/author-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
+import { AddEditRecipeComponent } from './components/add-edit-recipe/add-edit-recipe.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,14 @@ import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.comp
     RecipeItemComponent,
     AuthorModalComponent,
     ConfirmModalComponent,
+    AddEditRecipeComponent,
   ],
-  imports: [CommonModule, RecipesRoutingModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    RecipesRoutingModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class RecipesModule {}
