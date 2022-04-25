@@ -1,0 +1,51 @@
+@import "~src/theme/theme-variables";
+
+.list {
+  padding: 8px;
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &-search {
+      input {
+        height: 28px;
+      }
+    }
+
+    &-new {
+      button {
+        background-color: #81b29a;
+        margin: 4px;
+      }
+    }
+  }
+  &-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    cursor: pointer;
+
+    &-buttons {
+      button {
+        margin: 4px;
+        padding: 4px 8px;
+      }
+
+      &-delete {
+        background-color: #c9184a;
+      }
+      &-edit {
+        background-color: #0096c7;
+      }
+    }
+  }
+
+  &-item:hover {
+    background-color: rgba($primary, 0.2);
+  }
+}

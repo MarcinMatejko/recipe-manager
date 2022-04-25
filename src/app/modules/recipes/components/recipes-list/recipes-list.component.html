@@ -1,0 +1,16 @@
+<div class="list" *ngIf="recipes$ | async as recipes">
+  <div class="list-header">
+    <div class="list-header-search">
+      <input type="text" placeholder="Recipe name..." />
+    </div>
+    <div class="list-header-new"><button>Add new</button></div>
+  </div>
+
+  <div class="list-item" *ngFor="let recipe of recipes">
+    <span>{{ recipe.name }}</span>
+    <div class="list-item-buttons">
+      <button class="list-item-buttons-delete">Delete</button>
+      <button class="list-item-buttons-edit">Edit</button>
+    </div>
+  </div>
+</div>

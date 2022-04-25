@@ -1,0 +1,29 @@
+@import "~src/theme/theme-variables";
+
+.recipes {
+  //   background-color: rgba(green, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+
+  &-container {
+    width: 100%;
+    max-width: 1024px;
+    box-shadow: 6px 6px 24px 0px rgba(127, 85, 57, 1);
+
+    &-body {
+      background-color: $light;
+      display: flex;
+      flex-direction: row;
+
+      &-list {
+        width: 40%;
+        border-right: 1px solid $secondary;
+      }
+      &-item {
+        width: 70%;
+      }
+    }
+  }
+}
