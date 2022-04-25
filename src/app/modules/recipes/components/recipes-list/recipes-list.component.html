@@ -6,10 +6,23 @@
     <div class="list-header-new"><button>Add new</button></div>
   </div>
 
-  <div class="list-item" *ngFor="let recipe of recipes">
-    <span>{{ recipe.name }}</span>
+  <div
+    class="list-item"
+    [ngClass]="
+      selectedRecipeId === recipe._id ? 'list-item-selected' : 'list-item'
+    "
+    *ngFor="let recipe of recipes"
+  >
+    <span
+      class="list-item-name"
+      (click)="showSelectedRecipe(recipe._id)"
+      routerLink="/recipes/{{ recipe._id }}"
+      >{{ recipe.name }}</span
+    >
     <div class="list-item-buttons">
-      <button class="list-item-buttons-delete">Delete</button>
+      <button class="list-item-buttons-delete" (click)="deleteRecipe(recipe)">
+        Delete
+      </button>
       <button class="list-item-buttons-edit">Edit</button>
     </div>
   </div>

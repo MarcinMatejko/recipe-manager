@@ -1,0 +1,29 @@
+@import "~src/theme/theme-variables";
+
+.author {
+  width: 450px;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $secondary;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    button {
+      color: black;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+  }
+}

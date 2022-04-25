@@ -1,0 +1,18 @@
+<div class="delete">
+  <div class="delete-header">
+    <span class="delete-header-title">Delete Recipe</span>
+  </div>
+  <div class="delete-body">
+    <span
+      >Are You sure You want to delete <b>{{ data.name }}?</b></span
+    >
+    <div class="delete-body-buttons">
+      <button class="delete-body-buttons-cancel" (click)="closeDialog()">
+        Cancel
+      </button>
+      <button class="delete-body-buttons-confirm" (click)="deleteRecipeById()">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

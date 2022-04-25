@@ -1,0 +1,41 @@
+@import "~src/theme/theme-variables";
+
+.delete {
+  width: 450px;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $secondary;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 16px;
+
+      &-cancel {
+        color: black;
+      }
+
+      &-confirm {
+        background-color: $warning;
+      }
+    }
+  }
+}

@@ -30,6 +30,17 @@
     padding: 4px 0;
     cursor: pointer;
 
+    &-selected {
+      background-color: rgba($primary, 0.2);
+    }
+    &-name {
+      width: 100%;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     &-buttons {
       button {
         margin: 4px;
@@ -37,10 +48,10 @@
       }
 
       &-delete {
-        background-color: #c9184a;
+        background-color: $warning;
       }
       &-edit {
-        background-color: #0096c7;
+        background-color: $blue;
       }
     }
   }
