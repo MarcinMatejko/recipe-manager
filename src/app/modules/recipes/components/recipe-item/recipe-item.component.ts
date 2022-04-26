@@ -31,7 +31,6 @@ export class RecipeItemComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap((res) => {
           this.selectedId = res['recipeId'];
-          console.log('selectedId', this.selectedId);
           return (this.recipe$ = this.recipesResourceService.getRecipeById(
             this.selectedId
           ));
@@ -42,7 +41,6 @@ export class RecipeItemComponent implements OnInit, OnDestroy {
 
   deleteRecipe(recipe: RecipeResource): void {
     this.dialog.open(ConfirmModalComponent, { data: recipe });
-    // this.recipesResourceService.deleteRecipeById(recipeId).subscribe((res) => console.log("res"))
   }
 
   ngOnDestroy() {

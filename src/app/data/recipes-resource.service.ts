@@ -14,30 +14,7 @@ export class RecipesResourceService {
 
   constructor(private httpClient: HttpClient) {}
 
-  postNewRecipe(): Observable<RecipeResource> {
-    const newRecipe: RecipeResource = {
-      _id: 'asdasd',
-      name: 'Zaupa Pomidorowa',
-      preparationTimeInMinutes: 50,
-      description: 'Klasyczne polskie danie. Każdy zna i lubi',
-      ingredients: [
-        {
-          _id: '1',
-          name: 'Kość na zupę',
-          quantity: '1',
-        },
-        {
-          _id: '2',
-          name: 'Pomidory',
-          quantity: '4',
-        },
-        {
-          _id: '3',
-          name: 'Cebula',
-          quantity: '2',
-        },
-      ],
-    };
+  postNewRecipe(newRecipe: RecipeResource): Observable<RecipeResource> {
     return this.httpClient.post<RecipeResource>(
       `${this.API_ENDPOINT}`,
       newRecipe
@@ -45,18 +22,13 @@ export class RecipesResourceService {
   }
 
   getAllRecipes(): Observable<RecipeResource[]> {
-    return of(this.mockRecipes);
-    // return this.httpClient.get<RecipeResource[]>(`${this.API_ENDPOINT}`);
+    return this.httpClient.get<RecipeResource[]>(`${this.API_ENDPOINT}`);
   }
 
   getRecipeById(recipeId: string): Observable<RecipeResource> {
-    const selectedRecipe = this.mockRecipes.filter(
-      (item) => item._id === recipeId
+    return this.httpClient.get<RecipeResource>(
+      `${this.API_ENDPOINT}/${recipeId}`
     );
-    return of(selectedRecipe[0]);
-    // return this.httpClient.get<RecipeResource>(
-    //   `${this.API_ENDPOINT}/${recipeId}`
-    // );
   }
 
   editRecipe(editedRecipe: RecipeResource): Observable<RecipeResource> {
@@ -67,8 +39,8 @@ export class RecipesResourceService {
   }
 
   deleteRecipeById(recipeId: string): Observable<RecipeResource> {
-    console.log('delete in service', recipeId);
-    return this.httpClient.delete<RecipeResource>(`jakisurlDoUsuniecia`);
-    // return this.httpClient.delete<RecipeResource>(`${this.API_ENDPOINT}/${recipeId}`)
+    return this.httpClient.delete<RecipeResource>(
+      `${this.API_ENDPOINT}/${recipeId}`
+    );
   }
 }

@@ -11,6 +11,9 @@ import { ConfirmModalComponent } from '../../modals/confirm-modal/confirm-modal.
   styleUrls: ['./recipes-list.component.scss'],
 })
 export class RecipesListComponent implements OnInit {
+  @Output() editRecipeEvent = new EventEmitter<RecipeResource>();
+  @Output() addNewRecipeEvent = new EventEmitter<boolean>();
+  @Output() showDetailsRecipeEvent = new EventEmitter<boolean>();
   recipes$: Observable<RecipeResource[]>;
   selectedRecipeId: string;
 
@@ -25,16 +28,22 @@ export class RecipesListComponent implements OnInit {
 
   getAllRecipes(): void {
     this.recipes$ = this.recipesResourceService.getAllRecipes();
-    // this.recipes$.subscribe((res) => console.log('all recipes', res));
   }
 
   showSelectedRecipe(recipeId: string): void {
     this.selectedRecipeId = recipeId;
-    console.log('selectedRecipeId', this.selectedRecipeId);
+    this.showDetailsRecipeEvent.emit(true);
   }
 
   deleteRecipe(recipe: RecipeResource): void {
     this.dialog.open(ConfirmModalComponent, { data: recipe });
-    // this.recipesResourceService.deleteRecipeById(recipeId).subscribe((res) => console.log("res"))
+  }
+
+  editRecipe(recipe: RecipeResource): void {
+    this.editRecipeEvent.emit(recipe);
+  }
+
+  addNewRecipe(): void {
+    this.addNewRecipeEvent.emit(true);
   }
 }

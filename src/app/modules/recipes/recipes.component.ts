@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { RecipesResourceService } from 'src/app/data/recipes-resource.service';
+import { Component } from '@angular/core';
+import { RecipeResource } from 'src/app/data/recipes-interfaces';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss'],
 })
-export class RecipesComponent implements OnInit {
-  constructor(private recipesResourceService: RecipesResourceService) {}
+export class RecipesComponent {
+  recipeToEdit: RecipeResource;
+  showAddNewRecipeForm: boolean;
+  showForm = false;
 
-  ngOnInit(): void {}
-
-  addNewRecipe(): void {
-    this.recipesResourceService
-      .postNewRecipe()
-      .subscribe((res) => console.log('res', res));
+  showRecipeDetails(): void {
+    this.showForm = false;
   }
 
-  // getAllRecipes(): void {
-  //   this.recipesResourceService
-  //     .getAllRecipes()
-  //     .subscribe((res) => console.log('res', res));
-  // }
+  editRecipe(event: RecipeResource): void {
+    this.recipeToEdit = event;
+    this.showForm = true;
+  }
+
+  addNewRecipe(event: boolean): void {
+    this.showForm = true;
+    this.showAddNewRecipeForm = event;
+  }
 }

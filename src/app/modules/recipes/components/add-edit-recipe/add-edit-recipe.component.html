@@ -1,5 +1,92 @@
 <div class="add-edit">
-  <form [formGroup]="addEditForm">
-    <input type="text" formControlName="name" />
+  <h2 *ngIf="!isEditForm">Add new recipe</h2>
+  <h2 *ngIf="isEditForm">Edit recipe</h2>
+  <form [formGroup]="addEditForm" class="add-edit-form">
+    <div class="add-edit-form-item">
+      <span class="add-edit-form-item-label"
+        >Recipe name (min 3, max 80 characters.)</span
+      >
+      <input type="text" formControlName="name" placeholder="Recipe name" />
+    </div>
+
+    <div class="add-edit-form-item">
+      <span class="add-edit-form-item-label">Preparation time in minutes</span>
+      <input
+        type="number"
+        formControlName="preparationTimeInMinutes"
+        placeholder="Preparation time in minutes"
+      />
+    </div>
+
+    <div class="add-edit-form-item">
+      <span class="add-edit-form-item-label"
+        >Description (min 15, max 255 characters.)</span
+      >
+      <input
+        type="text"
+        formControlName="description"
+        placeholder="Description"
+      />
+    </div>
+
+    <div class="add-edit-form-item-ingredients" formArrayName="ingredients">
+      <div
+        class="add-edit-form-item-ingredients-body"
+        *ngFor="let ingredient of ingredients.controls; index as i"
+      >
+        <div
+          class="add-edit-form-item-ingredients-body-form"
+          [formGroupName]="i"
+        >
+          <div
+            class="add-edit-form-item add-edit-form-item-ingredients-body-form-name"
+          >
+            <span class="add-edit-form-item-label">Ingredient</span>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Ingredient"
+            />
+          </div>
+
+          <div
+            class="add-edit-form-item add-edit-form-item-ingredients-body-form-quantity"
+          >
+            <span class="add-edit-form-item-label">Quantity</span>
+            <input
+              type="number"
+              formControlName="quantity"
+              placeholder="Quantity"
+            />
+          </div>
+        </div>
+        <button
+          class="add-edit-form-item-ingredients-body-delete"
+          (click)="deleteIngredient(i)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+    <div class="add-edit-form-item-ingredients-buttons">
+      <button
+        class="add-edit-form-item-ingredients-buttons-new"
+        (click)="addIngredient()"
+      >
+        Add new ingredient
+      </button>
+    </div>
   </form>
+  <div class="add-edit-buttons">
+    <button class="add-edit-buttons-cancel" (click)="clearForm()">
+      Cancel
+    </button>
+    <button
+      class="add-edit-buttons-new"
+      (click)="addNewRecipe()"
+      [disabled]="!addEditForm.valid"
+    >
+      Add new recipe
+    </button>
+  </div>
 </div>

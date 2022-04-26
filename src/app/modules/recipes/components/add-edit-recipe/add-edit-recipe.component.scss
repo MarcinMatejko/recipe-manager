@@ -1,0 +1,101 @@
+@import "~src/theme/theme-variables";
+
+.add-edit {
+  padding: 16px;
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+
+      &-label {
+        font-size: 12px;
+        margin-left: 4px;
+      }
+
+      input {
+        width: 100%;
+        max-width: 330px;
+        margin-bottom: 12px;
+        height: 33px;
+        font-size: 16px;
+      }
+
+      &-ingredients {
+        display: flex;
+        flex-direction: column;
+
+        &-body {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+          width: 430px;
+          margin-bottom: 12px;
+
+          &-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 330px;
+
+            input {
+              margin-bottom: 0px;
+              height: 33px;
+              font-size: 16px;
+            }
+
+            &-name {
+              width: 70%;
+            }
+
+            &-quantity {
+              width: 25%;
+            }
+          }
+
+          &-delete {
+            background-color: $warning;
+          }
+        }
+
+        &-buttons {
+          width: 330px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          &-new {
+            background-color: $green;
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+
+  &-buttons {
+    width: 100%;
+    max-width: 338px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 16px;
+
+    &-new {
+      background-color: $green;
+      margin: 4px;
+    }
+
+    &-new:disabled {
+      background-color: grey;
+      cursor: auto;
+    }
+
+    &-cancel {
+      color: black;
+    }
+  }
+}

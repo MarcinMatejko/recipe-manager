@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditRecipeComponent } from './components/add-edit-recipe/add-edit-recipe.component';
 import { RecipesComponent } from './recipes.component';
 
 const routes: Routes = [
