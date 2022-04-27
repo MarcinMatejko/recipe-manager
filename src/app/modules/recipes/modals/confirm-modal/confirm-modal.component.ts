@@ -23,6 +23,7 @@ export class ConfirmModalComponent {
     this.recipesResourceService
       .deleteRecipeById(this.data._id)
       .subscribe(() => {
+        this.recipesResourceService.refreshRecipes();
         this.closeDialog();
       });
   }

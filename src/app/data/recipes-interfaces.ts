@@ -1,5 +1,5 @@
 export interface RecipeResource {
-  _id?: string;
+  _id: string;
   name: string;
   preparationTimeInMinutes: number;
   description: string;

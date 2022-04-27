@@ -11,7 +11,12 @@
         >
           Delete
         </button>
-        <button class="recipe-body-header-buttons-edit">Edit</button>
+        <button
+          class="recipe-body-header-buttons-edit"
+          (click)="editRecipe(recipe)"
+        >
+          Edit
+        </button>
       </div>
     </div>
     <span class="recipe-body-time"

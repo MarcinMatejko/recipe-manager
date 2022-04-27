@@ -85,8 +85,17 @@
       class="add-edit-buttons-new"
       (click)="addNewRecipe()"
       [disabled]="!addEditForm.valid"
+      *ngIf="!isEditForm"
     >
       Add new recipe
+    </button>
+    <button
+      class="add-edit-buttons-new"
+      (click)="editRecipe()"
+      [disabled]="!addEditForm.valid"
+      *ngIf="isEditForm"
+    >
+      Edit recipe
     </button>
   </div>
 </div>

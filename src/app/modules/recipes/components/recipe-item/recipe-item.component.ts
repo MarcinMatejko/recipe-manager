@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription, switchMap } from 'rxjs';
@@ -12,6 +18,7 @@ import { ConfirmModalComponent } from '../../modals/confirm-modal/confirm-modal.
   styleUrls: ['./recipe-item.component.scss'],
 })
 export class RecipeItemComponent implements OnInit, OnDestroy {
+  @Output() editRecipeEvent = new EventEmitter<RecipeResource>();
   recipe$: Observable<RecipeResource>;
   termSubscriber: Subscription;
   selectedId: string;
@@ -41,6 +48,10 @@ export class RecipeItemComponent implements OnInit, OnDestroy {
 
   deleteRecipe(recipe: RecipeResource): void {
     this.dialog.open(ConfirmModalComponent, { data: recipe });
+  }
+
+  editRecipe(recipe: RecipeResource): void {
+    this.editRecipeEvent.emit(recipe);
   }
 
   ngOnDestroy() {

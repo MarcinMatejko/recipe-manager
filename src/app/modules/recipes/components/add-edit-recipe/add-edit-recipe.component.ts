@@ -30,6 +30,7 @@ export class AddEditRecipeComponent implements OnInit {
 
   generateAddEditForm(): void {
     this.addEditForm = new FormGroup({
+      _id: new FormControl(),
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -77,11 +78,16 @@ export class AddEditRecipeComponent implements OnInit {
     this.recipesResourceService
       .postNewRecipe(this.addEditForm.value)
       .subscribe((res) => {
+        this.recipesResourceService.refreshRecipes();
         this.addEditForm.reset();
       });
   }
 
   editRecipe(): void {
-    this.recipesResourceService.editRecipe(this.addEditForm.value).subscribe();
+    this.recipesResourceService
+      .editRecipe(this.addEditForm.value)
+      .subscribe(() => {
+        this.recipesResourceService.refreshRecipes();
+      });
   }
 }

@@ -10,6 +10,7 @@
       ></app-recipes-list>
       <app-recipe-item
         *ngIf="!showForm"
+        (editRecipeEvent)="editRecipe($event)"
         class="recipes-container-body-item"
       ></app-recipe-item>
       <app-add-edit-recipe
